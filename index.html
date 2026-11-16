@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>种菜解压记 · 中央财经大学沙河校区</title>
+<meta name="description" content="以中央财经大学沙河校区为背景的校园解压小游戏合集：保卫宿舍、食堂贪吃蛇、跳地为牢、诸葛嘻嘻、包裹雨。">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ==================== 首页 ==================== -->
+  <section class="screen home-screen active" id="screen-home">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="cloud c1" aria-hidden="true"></div>
+    <div class="cloud c2" aria-hidden="true"></div>
+    <div class="cloud c3" aria-hidden="true"></div>
+    <div class="hill h1" aria-hidden="true"></div>
+    <div class="hill h2" aria-hidden="true"></div>
+    <div class="hill h3" aria-hidden="true"></div>
+    <div class="grass-front" aria-hidden="true"></div>
+    <div id="leaf-layer" aria-hidden="true"></div>
+
+    <button class="btn btn-sm btn-ghost history-fab" id="btn-history-home">历史战绩</button>
+    <div class="corner-tools">
+      <button class="icon-btn" id="btn-sound-home" title="音效开关">音效</button>
+    </div>
+
+    <div class="home-content">
+      <p class="eyebrow">中央财经大学 · 沙河校区 · 校园解压计划</p>
+      <h1 class="home-title">种菜解压记</h1>
+      <p class="home-sub">早八、作业、签到……都先放一放，<b>在校园里种一颗好心情</b></p>
+      <div class="home-cta">
+        <button class="btn btn-primary" id="btn-enter">进去逛逛</button>
+      </div>
+      <p class="hint-line">大门已为你打开 · 点击后跟随苗苗进入校园</p>
+    </div>
+
+    <div class="gate-scene" id="gate-scene">
+      <div class="gate" id="gate">
+        <div class="gate-roof"><span class="gate-plaque">中央财经大学</span></div>
+        <div class="gate-body">
+          <div class="gate-pillar left"></div>
+          <div class="gate-doors">
+            <div class="gate-dark"></div>
+            <div class="gate-glow"></div>
+            <div class="door door-l"></div>
+            <div class="door door-r"></div>
+          </div>
+          <div class="gate-pillar right"></div>
+        </div>
+        <div class="gate-steps"></div>
+      </div>
+      <div class="mascot-home" id="mascot-home"></div>
+    </div>
+  </section>
+
+  <!-- ==================== 校园地图 ==================== -->
+  <section class="screen map-screen" id="screen-map">
+    <header class="map-header">
+      <button class="btn btn-sm map-back" id="btn-back-home">返回首页</button>
+      <h2>沙河校区 · 解压地图<small>点一个地标，苗苗带你进去</small></h2>
+      <div class="spacer"></div>
+      <button class="btn btn-sm btn-ghost" id="btn-history-map">历史战绩</button>
+      <button class="icon-btn" id="btn-sound-map" title="音效开关">音效</button>
+    </header>
+
+    <div class="map-inner">
+      <div class="map-tip">
+        <span><span class="dot">●</span> 五个地标，五种解压方式 · 点击卡片进入</span>
+        <div class="legend">
+          <span>保卫宿舍 · 弹幕射击</span>
+          <span>食堂贪吃蛇</span>
+          <span>音游节奏</span>
+          <span>益智四连</span>
+          <span>接包裹</span>
+        </div>
+      </div>
+
+      <div class="map-grid" id="map-grid">
+        <button class="map-card" data-game="dorm">
+          <div class="map-art"><canvas width="360" height="203" data-art="dorm"></canvas>
+            <span class="best-badge" data-best="dorm">暂无战绩</span>
+            <span class="enter-flag">进入 · 保卫宿舍</span>
+          </div>
+          <div class="map-info">
+            <div class="icon">舍</div>
+            <div>
+              <h3>宿舍楼 <em>保卫宿舍</em></h3>
+              <p>早八、早十、作业、签到从天而降，驾驶小飞机守住还在睡觉的宿舍楼。</p>
+            </div>
+          </div>
+        </button>
+
+        <button class="map-card" data-game="canteen">
+          <div class="map-art"><canvas width="360" height="203" data-art="canteen"></canvas>
+            <span class="best-badge" data-best="canteen">暂无战绩</span>
+            <span class="enter-flag">进入 · 食堂贪吃蛇</span>
+          </div>
+          <div class="map-info">
+            <div class="icon">食</div>
+            <div>
+              <h3>子衿食堂 <em>食堂贪吃蛇</em></h3>
+              <p>糖醋里脊、鸡腿、奶茶……越吃越长，别撞墙，也别咬到自己。</p>
+            </div>
+          </div>
+        </button>
+
+        <button class="map-card" data-game="activity">
+          <div class="map-art"><canvas width="360" height="203" data-art="activity"></canvas>
+            <span class="best-badge" data-best="activity">暂无战绩</span>
+            <span class="enter-flag">进入 · 跳地为牢</span>
+          </div>
+          <div class="map-info">
+            <div class="icon">舞</div>
+            <div>
+              <h3>大活 <em>跳地为牢</em></h3>
+              <p>四个键，一条心。踩准节拍，把压力跳成连击。</p>
+            </div>
+          </div>
+        </button>
+
+        <button class="map-card" data-game="library">
+          <div class="map-art"><canvas width="360" height="203" data-art="library"></canvas>
+            <span class="best-badge" data-best="library">暂无战绩</span>
+            <span class="enter-flag">进入 · 诸葛嘻嘻</span>
+          </div>
+          <div class="map-info">
+            <div class="icon">智</div>
+            <div>
+              <h3>骋望楼 <em>诸葛嘻嘻</em></h3>
+              <p>找不同、一笔连线、密码推理、五子棋（可联机），总有一款治得了你的脑子。</p>
+            </div>
+          </div>
+        </button>
+
+        <button class="map-card" data-game="express">
+          <div class="map-art"><canvas width="360" height="203" data-art="express"></canvas>
+            <span class="best-badge" data-best="express">暂无战绩</span>
+            <span class="enter-flag">进入 · 包裹雨</span>
+          </div>
+          <div class="map-info">
+            <div class="icon">递</div>
+            <div>
+              <h3>快递驿站 <em>包裹雨</em></h3>
+              <p>双十一的包裹漫天飞，顺手接杯蜜雪。易碎品和错件可千万别碰。</p>
+            </div>
+          </div>
+        </button>
+
+        <div class="map-deco" style="right:2%;top:6%;">~ 沙河的风 ~</div>
+      </div>
+
+      <div class="map-mascot" id="map-mascot"></div>
+      <div class="map-start">起点 · 校门口</div>
+    </div>
+  </section>
+
+  <!-- ==================== 游戏页 ==================== -->
+  <section class="screen game-screen" id="screen-game">
+    <div class="game-frame">
+      <div class="game-bar">
+        <button class="btn btn-sm" id="btn-exit">退出</button>
+        <div class="g-title">
+          <b id="game-title">保卫宿舍</b>
+          <span id="game-sub">操作提示</span>
+        </div>
+        <div class="tools">
+          <button class="btn btn-sm" id="btn-pause">暂停</button>
+          <button class="btn btn-sm" id="btn-restart">重来</button>
+        </div>
+      </div>
+      <div class="stage-wrap">
+        <div class="stage" id="stage"></div>
+        <div class="pause-hint">ESC 暂停 / 继续</div>
+        <div class="overlay" id="pause-overlay">
+          <div class="panel">
+            <h2>暂停一下</h2>
+            <p class="sub">深呼吸，喝口水，苗苗等你回来</p>
+            <div class="panel-actions">
+              <button class="btn btn-green" id="btn-resume">继续游戏</button>
+              <button class="btn" id="btn-restart-2">重来一局</button>
+              <button class="btn btn-ghost" id="btn-exit-2">退出返回</button>
+            </div>
+            <div class="tip-box" id="pause-tip"></div>
+          </div>
+        </div>
+        <div class="overlay" id="result-overlay">
+          <div class="panel">
+            <div id="new-record-slot"></div>
+            <h2 id="result-title">本局结束</h2>
+            <p class="sub" id="result-sub"></p>
+            <div class="score-label">本局得分</div>
+            <div class="score-big" id="result-score">0</div>
+            <div class="result-stats" id="result-stats"></div>
+            <div class="panel-actions">
+              <button class="btn btn-green" id="btn-again">再来一局</button>
+              <button class="btn btn-ghost" id="btn-back-map">返回校园</button>
+            </div>
+            <div class="tip-box" id="result-tip"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- 历史战绩 -->
+<div class="modal" id="history-modal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>历史战绩</h3>
+      <span class="best-badge" style="position:static;background:#EAF4E4;color:#2E6B45;">保存在本机</span>
+      <div class="spacer"></div>
+      <button class="btn btn-sm" id="btn-close-history">关闭</button>
+    </div>
+    <div class="modal-body">
+      <div class="best-grid" id="best-grid"></div>
+      <div class="history-title"><span>最近记录</span><span>共 <b id="history-count">0</b> 条</span></div>
+      <div class="history-list" id="history-list"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="danger-link" id="btn-clear-history">清空全部记录</button>
+      <span style="font-size:11px;color:#A8998A;">解压第一，比赛第二</span>
+    </div>
+  </div>
+</div>
+
+<div id="fade"></div>
+
+<script src="js/core.js"></script>
+<script src="js/home.js"></script>
+<script src="js/map.js"></script>
+<script src="js/games/dorm.js"></script>
+<script src="js/games/canteen.js"></script>
+<script src="js/games/activity.js"></script>
+<script src="js/games/puzzle.js"></script>
+<script src="js/games/link.js"></script>
+<script src="js/games/code.js"></script>
+<script src="js/games/gomoku.js"></script>
+<script src="js/games/express.js"></script>
+<script src="js/boot.js"></script>
+</body>
+</html>
